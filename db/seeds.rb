@@ -8,9 +8,8 @@
 
 Airport.delete_all
 
-Airport.create([{ code: "LHR", name: "London Heathrow" },
-                { code: "HND", name: "Tokyo Haneda" },
-                { code: "DXB", name: "Dubai" },
-                { code: "MUC", name: "Munich" },
-                { code: "CDG", name: "Paris Charles de Gaulle" },
-                { code: "AMS", name: "Amsterdam Schipol" }])
+Airport.create([{ code: "LHR", name: "London Heathrow", utc_offset: "+01:00" },
+                { code: "HND", name: "Tokyo Haneda", utc_offset: "+09:00" },
+                { code: "DXB", name: "Dubai", utc_offset: "+04:00" },
+                { code: "JFK", name: "New York JFK", utc_offset: "-04:00"  },
+                { code: "YVR", name: "Vancouver", utc_offset: "-07:00" }])
