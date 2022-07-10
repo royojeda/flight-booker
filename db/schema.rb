@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_10_132532) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_10_151746) do
   create_table "airports", force: :cascade do |t|
     t.string "code"
     t.string "name"
-    t.string "utc_offset"
+    t.string "time_zone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "flights", force: :cascade do |t|
-    t.time "departure_time"
-    t.time "arrival_time"
+    t.string "departure_time"
+    t.string "arrival_time"
     t.string "duration"
     t.integer "departure_airport_id"
     t.integer "arrival_airport_id"

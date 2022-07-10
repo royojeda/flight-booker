@@ -8,8 +8,19 @@
 
 Airport.delete_all
 
-Airport.create([{ code: "LHR", name: "London Heathrow", utc_offset: "+01:00" },
-                { code: "HND", name: "Tokyo Haneda", utc_offset: "+09:00" },
-                { code: "DXB", name: "Dubai", utc_offset: "+04:00" },
-                { code: "JFK", name: "New York JFK", utc_offset: "-04:00"  },
-                { code: "YVR", name: "Vancouver", utc_offset: "-07:00" }])
+Airport.create([{ code: "LHR", name: "London Heathrow", time_zone: "London" },
+                { code: "HND", name: "Tokyo Haneda", time_zone: "Tokyo" },
+                { code: "DXB", name: "Dubai", time_zone: "Abu Dhabi" },
+                { code: "JFK", name: "New York JFK", time_zone: "America/New_York" },
+                { code: "YVR", name: "Vancouver", time_zone: "Pacific Time (US & Canada)" }])
+
+Flight.delete_all
+
+Flight.create([{ departure_airport_id: Airport.where(code: "LHR").first.id,
+                 arrival_airport_id: Airport.where(code: "HND").first.id,
+                 departure_time: "2022-09-21 13:30",
+                 duration: "13:00" },
+               { departure_airport_id: Airport.where(code: "JFK").first.id,
+                 arrival_airport_id: Airport.where(code: "YVR").first.id,
+                 departure_time: "2023-03-16 7:45",
+                 duration: "06:00" }])
