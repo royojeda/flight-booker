@@ -1,5 +1,5 @@
 class Flight < ApplicationRecord
-  after_validation :set_departure_time, :determine_arrival_time
+  after_validation :set_departure_time, :set_departure_date, :determine_arrival_time
 
   belongs_to :departure_airport, class_name: "Airport"
   belongs_to :arrival_airport, class_name: "Airport"
@@ -8,6 +8,10 @@ class Flight < ApplicationRecord
 
   def set_departure_time
     self.departure_time = departure_time_object.in_time_zone(departure_airport.time_zone).to_s
+  end
+
+  def set_departure_date
+    self.departure_date = departure_time.to_time.strftime("%Y %B %d")
   end
 
   def determine_arrival_time

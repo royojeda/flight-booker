@@ -1,9 +1,18 @@
 <h1>Search Flights</h1>
 
-<%= form_with url: "/search", method: :get do |form| %>
+<%= form_with model: Flight.new, url: flights_path, method: :get do |form| %>
   <%= form.select(:departure_airport_id, @airports) %>
   <%= form.select(:arrival_airport_id, @airports) %>
   <%= select_tag :passenger_count, options_for_select([ 1, 2, 3, 4 ]) %>
-  <%= form.select(:date, @dates) %>
+  <%= form.select(:departure_date, @dates) %>
   <%= form.submit "Search" %>
+<% end %>
+
+<% @flights.each do |flight| %>
+  <p>
+    Departure Time: <%= flight.departure_time.to_time.strftime("%I:%M %p") %><br><br>
+    Flight Time: <%= flight.duration %><br><br>
+    Arrival Time: <%= flight.arrival_time.to_time.strftime("%I:%M %p") %><br><br>
+  </p>
+  <br>
 <% end %>
