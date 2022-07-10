@@ -1,6 +1,7 @@
 class FlightsController < ApplicationController
   def index
     @flights = Flight.where(flight_params)
+    @passenger_count = params[:passenger_count]
     @airports = Airport.all.map { |a| [a.name, a.id] }
     @dates = Flight.all.map { |f| [f.departure_date, f.departure_date] }.uniq
   end
