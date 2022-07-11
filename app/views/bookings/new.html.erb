@@ -16,15 +16,15 @@
 <br><br>
 
 <h2>Enter Passenger Details</h2>
-<%= form_with model: @booking do |form| %>
-  <% @passenger_count.times do %>
-    <%= form.fields_for :passengers do |passengers_form| %>
-        <%= passengers_form.label :name %>
-        <%= passengers_form.text_field :name %>
 
-        <%= passengers_form.label :email %>
-        <%= passengers_form.text_field :email %>
-      <br><br>
-    <% end %>
+<%= form_with model: @booking do |form| %>
+  <%= form.fields_for :passengers do |passengers_form| %>
+    <%= passengers_form.label :name %>
+    <%= passengers_form.text_field :name %>
+
+    <%= passengers_form.label :email %>
+    <%= passengers_form.text_field :email %>
+    <br><br>
   <% end %>
+  <%= form.submit "Book the Flight!" %>
 <% end %>
