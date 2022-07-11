@@ -1,4 +1,6 @@
-<h1>Search Flights</h1>
+<%= link_to root_path do %>
+  <h1>Search Flights</h1>
+<% end %>
 
 <%= form_with model: Flight.new, url: flights_path, method: :get do |form| %>
   <%= form.select(:departure_airport_id, @airports) %>
