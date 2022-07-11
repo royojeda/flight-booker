@@ -1,4 +1,6 @@
 class BookingsController < ApplicationController
+  before_action :delete_bookings_and_passengers, only: [:create]
+
   def show
     @booking = Booking.find(params[:id])
     @flight = @booking.flight
@@ -26,5 +28,11 @@ class BookingsController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(:flight_id, passengers_attributes: [:name, :email])
+  end
+
+  def delete_bookings_and_passengers
+    Booking.delete_all
+    Passenger.delete_all
+    BookingTransaction.delete_all
   end
 end
