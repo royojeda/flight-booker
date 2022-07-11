@@ -1,0 +1,22 @@
+<h1>Booking Details</h1>
+
+<br>
+
+<p>
+  <h2>Flight</h2>
+  <strong><%= @flight.departure_airport.name %></strong>
+  to
+  <strong><%= @flight.arrival_airport.name %></strong><br><br>
+  <%= @flight.departure_date %><br><br>
+  Departure Time:
+  <%= @flight.departure_time.to_time.strftime("%I:%M %p") %><br><br>
+  Arrival Time:
+  <%= @flight.arrival_time.to_time.strftime("%I:%M %p") %>
+</p>
+
+<p>
+  <h2>Passengers:</h2>
+  <% @passengers.each do |passenger| %>
+    <%= passenger.name %><br><br>
+  <% end %>
+</p>
